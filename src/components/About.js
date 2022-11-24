@@ -1,14 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Input } from "antd";
+const { TextArea } = Input;
+
+const onChange = (e) => {
+  console.log("Change:", e.target.value);
+};
 
 const About = () => {
+  const [value, setValue] = useState("");
   return (
     <div>
-      <h1>소개</h1>
-      <p>이 프로젝트는 리액트 라우터 기초를 실습해보는 예제 프로젝트랍니다.</p>
       제목
-      <input type="text" name="title" placeholder="제목"></input>
+      <Input showCount maxLength={20} onChange={onChange} />
+      <br />
       내용
-      <input type="text" name="content" placeholder="내용입력"></input>
+      <TextArea
+        placeholder="내용 입력"
+        autoSize={{
+          maxRows: 13,
+        }}
+        maxLength={500}
+        showCount
+      />
+      <div
+        style={{
+          margin: "24px 0",
+        }}
+      />
+      <br />
+      <Link to="/create">
+        <button>등록하기</button>
+      </Link>
+      <
     </div>
   );
 };
